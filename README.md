@@ -7,8 +7,8 @@ ModelBinder.cs file consists of
 > Method for Cloning a C# Object (Deep Cloning).
 
 1. Solid Principle
-    1. Open Close Principle
-    2. Single Responsibility Principle
+    > 1. Open Close Principle
+    > 2. Single Responsibility Principle
     3. Liskov Substitution Principle
     4. Interface Seggregation Principle
     5. Dependency Inversion Principle
