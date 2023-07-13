@@ -1,7 +1,7 @@
 # DesignPatterns_CSharp
-This repo consists of Design Patterns and Solid principle Samples in C#. 
+This repo consists of Sample code for Design Patterns and Solid principle in C#. 
 
-ModelBinder.cs file consists of
+ModelBinder.cs file consists of sample
 > Method for converting DataTable <=> Model (Collection) Binder (Needs Testing with sample values)
 > 
 > Method for Cloning a C# Object (Deep Cloning). (Needs Testing with sample values)
