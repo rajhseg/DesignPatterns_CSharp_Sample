@@ -1,5 +1,5 @@
 # DesignPatterns_CSharp
-This repo consists of Design Patterns and Solid principle Samples in C#
+This repo consists of Design Patterns and Solid principle Samples in C# and Sample code for DataTable <=> Model (Collection) Binder
 
 1. Solid Principle
     1. Open Close Principle
