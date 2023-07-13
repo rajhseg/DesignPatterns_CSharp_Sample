@@ -3,6 +3,7 @@ This repo consists of Design Patterns and Solid principle Samples in C#.
 
 ModelBinder.cs file consists of
 > Method for converting DataTable <=> Model (Collection) Binder
+> 
 > Method for Cloning a C# Object.
 
 1. Solid Principle
