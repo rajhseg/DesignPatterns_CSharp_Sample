@@ -23,7 +23,7 @@ namespace DesignPatternsSamples.Creational
                     {
                         _instance = new Singleton();
                     }
-                }
+                } 
 
                 return _instance;
             }
