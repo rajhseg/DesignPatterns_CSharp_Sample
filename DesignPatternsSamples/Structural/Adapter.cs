@@ -6,58 +6,47 @@ using System.Threading.Tasks;
 
 namespace DesignPatternsSamples.Structural
 {
-    public interface IEmployee
+    public interface ILogger
     {
-        string GetDetails(int indent);
+        void Log(string message);
     }
 
-    public class Employee: IEmployee
+    public class DBWriter
     {
-        public int Salary { get; set; }
-
-        public string Name { get; set; }
-
-        public int Age { get; set; }
-
-        public string GetDetails(int indent)
+        public void WriteToDB(string message)
         {
-            return "+" + new string('-', indent) + this.Name;
+
         }
     }
 
-    public class EmployeeSystem
+    public class DBAdapter : ILogger
     {
-        public void Process(List<Employee> emps)
-        {
-            StringBuilder sb = new StringBuilder();
+        DBWriter writer;
 
-            foreach (var item in emps)
-            {
-                sb.Append(item.Name);
-            }
+        public DBAdapter()
+        {
+            writer = new DBWriter();
+        }
+
+        public void Log(string message)
+        {
+            writer.WriteToDB(message);
         }
     }
 
-    public class EmployeeAdapter
+    public class Employee
     {
-        static EmployeeSystem system = new EmployeeSystem();
+        private readonly ILogger logger;
 
-        public static void Process(string[,] emps)
+        public Employee(ILogger logger)
         {
-            List<Employee> emplist = new List<Employee>();
+            this.logger = logger;
+        }
 
-            for (int i = 0; i < emps.GetLength(0); i++)
-            {
-
-                var name = emps[i, 0];
-                var age = emps[i, 1];
-                var salary = emps[i, 2];
-
-                emplist.Add(new Employee { Name = name, Age = int.Parse(age), Salary = int.Parse(salary) });
-
-            }
-
-            system.Process(emplist);            
+        public void Exec(string message)
+        {
+            this.logger.Log(message);
+            this.logger.Log("sample1");
         }
     }
 }
