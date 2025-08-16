@@ -6,49 +6,105 @@ using System.Threading.Tasks;
 
 namespace DesignPatternsSamples.Structural
 {
-    internal interface ICart
+    public interface IDVDPlayer
     {
-        void AddToCart(IProduct product);
+        void On();
+
+        void Off();
+
+        void Play();
+
+        void Pause();
     }
 
-    internal interface IProduct
+    public interface IProjector
     {
-        string Details();
+        void Show();
+
+        void Hide();
     }
 
-    internal interface IFacade
+    public interface ISoundSystem
     {
-        IProduct SelectProduct();
+        void IncreaseVolume();
 
-        IList<ICart> GetCartDetaills();
+        void DecreaseVolume();
     }
 
-    internal class Cart : ICart
+    public class DVDPlayer : IDVDPlayer
     {
-        public void AddToCart(IProduct product)
+        public void Off()
         {
-            
+
+        }
+
+        public void On()
+        {
+
+        }
+
+        public void Pause()
+        {
+
+        }
+
+        public void Play()
+        {
+
         }
     }
 
-    internal class Product : IProduct
+    public class Projector : IProjector
     {
-        public string Details()
+        public void Hide()
         {
-            return "ABC";
+
+        }
+
+        public void Show()
+        {
+
         }
     }
 
-    internal class Facade : IFacade
+    public class SoundSystem : ISoundSystem
     {
-        public IList<ICart> GetCartDetaills()
+        public void DecreaseVolume()
         {
-            return new List<ICart> { new Cart() };
+
         }
 
-        public IProduct SelectProduct()
+        public void IncreaseVolume()
         {
-            return new Product();
+
+        }
+    }
+
+
+    public interface ITheatreFacade
+    {
+        void WatchMovie();
+    }
+
+    public class TheatreFacade : ITheatreFacade
+    {
+        private readonly SoundSystem soundSystem;
+        private readonly Projector projector;
+        private readonly DVDPlayer dVDPlayer;
+
+        public TheatreFacade(SoundSystem sound, Projector projector, DVDPlayer dvdplayer)
+        {
+            this.soundSystem = sound;
+            this.projector = projector;
+            this.dVDPlayer = dvdplayer;
+        }
+
+        public void WatchMovie()
+        {
+            this.dVDPlayer.On();
+            this.dVDPlayer.Play();
+            this.projector.Show();
+            this.soundSystem.IncreaseVolume();
         }
     }
 }

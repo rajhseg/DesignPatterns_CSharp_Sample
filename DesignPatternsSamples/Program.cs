@@ -15,7 +15,7 @@ combination.OnMatching += Combination_OnMatching;
 combination.Permutation("ABC");
 
 void Combination_OnMatching(object sender, string match)
-{    
+{
     matCount++;
     Console.WriteLine(match);
 }
@@ -51,7 +51,7 @@ per1.Name = "f";
 per1.Id = 2;
 per1.IsDeleted = false;
 per1.Department.Name = "F";
-per1.Books.Add(new Book { BookId = 3, Name = "B" } );
+per1.Books.Add(new Book { BookId = 3, Name = "B" });
 per1.Samples.Add("vvv");
 per1.WrittenBooks.Add(new Book { BookId = 6, Name = "Y" });
 
@@ -110,9 +110,9 @@ List<Singleton> single = new List<Singleton>();
 ParallelOptions parallelOptions = new ParallelOptions() { MaxDegreeOfParallelism = 5 };
 int[] nums = new int[] { 1, 2, 3, 4, 5 };
 
-Parallel.ForEachAsync(nums, parallelOptions ,async (x, token) =>
+Parallel.ForEachAsync(nums, parallelOptions, async (x, token) =>
 {
-   await Task.Run(()=> { single.Add(Singleton.Instance()); });
+    await Task.Run(() => { single.Add(Singleton.Instance()); });
 }).GetAwaiter().GetResult();
 
 Console.WriteLine("\nSingleton pattern");
@@ -192,8 +192,9 @@ Console.WriteLine(offerPrice);
 Console.WriteLine("\nAdapter pattern");
 Console.WriteLine("************************");
 
-string[,] emps = new string[4, 3] { {"a","22", "10000" }, { "a", "21", "20000" }, { "a", "25", "30000" }, { "a", "26", "30003" }};
-EmployeeAdapter.Process(emps);
+string[,] emps = new string[4, 3] { { "a", "22", "10000" }, { "a", "21", "20000" }, { "a", "25", "30000" }, { "a", "26", "30003" } };
+CliSystem emp12 = new CliSystem(new DBAdapter());
+emp12.Exec("mm");
 
 /* Bridge */
 Console.WriteLine("\nBridge pattern");
@@ -230,9 +231,8 @@ Console.WriteLine(m1details);
 Console.WriteLine("**********************************");
 Console.WriteLine("\nFacade");
 
-IFacade facade = new Facade();
-IList<ICart> detail = facade.GetCartDetaills();
-IProduct product1 = facade.SelectProduct();
+ITheatreFacade facade = new TheatreFacade(new SoundSystem(), new Projector(), new DVDPlayer());
+facade.WatchMovie();
 
 /* FlyWeight */
 FlyWeightFactory fac1 = new FlyWeightFactory();

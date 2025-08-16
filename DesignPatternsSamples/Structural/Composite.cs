@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace DesignPatternsSamples.Structural
 {
+    public interface IEmployee
+    {
+        string Name { get; }
+
+        string GetDetails(int indent);
+    }
+
     internal class Manager : IEmployee
     {
         public string Name { get; set; }
@@ -28,13 +35,13 @@ namespace DesignPatternsSamples.Structural
             StringBuilder builder = new StringBuilder();
 
             builder.AppendLine("+" + new string('-', indent) + this.Name);
-            
+
             foreach (var item in Employees)
             {
-                builder.AppendLine(item.GetDetails(indent+1));
+                builder.AppendLine(item.GetDetails(indent + 1));
             }
 
             return builder.ToString();
         }
-    }    
+    }
 }

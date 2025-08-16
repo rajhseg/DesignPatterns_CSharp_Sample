@@ -11,7 +11,7 @@ namespace DesignPatternsSamples.Structural
         void Log(string message);
     }
 
-    public class DBWriter
+    public class LegacyDBWriter
     {
         public void WriteToDB(string message)
         {
@@ -21,11 +21,11 @@ namespace DesignPatternsSamples.Structural
 
     public class DBAdapter : ILogger
     {
-        DBWriter writer;
+        LegacyDBWriter writer;
 
         public DBAdapter()
         {
-            writer = new DBWriter();
+            writer = new LegacyDBWriter();
         }
 
         public void Log(string message)
@@ -34,11 +34,12 @@ namespace DesignPatternsSamples.Structural
         }
     }
 
-    public class Employee
+    public class CliSystem
     {
         private readonly ILogger logger;
 
-        public Employee(ILogger logger)
+
+        public CliSystem(ILogger logger)
         {
             this.logger = logger;
         }
@@ -47,6 +48,18 @@ namespace DesignPatternsSamples.Structural
         {
             this.logger.Log(message);
             this.logger.Log("sample1");
+        }
+    }
+
+    public class Employee : IEmployee
+    {
+        public string Name { get; set; }
+
+        public int Age { get; set; }
+
+        public string GetDetails(int indent)
+        {
+            return new string('-', indent) + Name;
         }
     }
 }
